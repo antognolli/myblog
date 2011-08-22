@@ -3,10 +3,11 @@
   padding: 0;
 
   font-family: Georgia, Palatino, Times, 'Times New Roman', sans-serif;
+  color: #444;
 }
 
 body {
-  background: #fff;
+  background: #ddd;
 }
 
 a {
@@ -22,13 +23,48 @@ a:hover {
   color: #f90;
 }
 
+#content {
+  max-width: 770px;
+  margin: auto;
+  background: #fff;
+}
+
+#title {
+  margin-left: 20px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+#title h1 {
+  font-size: 40px;
+  font-weight: normal;
+}
+
+#menu {
+  margin-left: 20px;
+}
+
+#menu ul {
+  list-style-type: none;
+  float: left;
+  width: 95%;
+  /* border-top: 1px solid #ccc; */
+  margin-bottom: 20px;
+}
+
+#menu a {
+  float: left;
+  width: 40px;
+  margin-right: 20px;
+}
+
+#menu li {
+  display: inline;
+}
+
 #main {
-  position: absolute;
-
-  top: 40px;
-  left: 280px;
-
-  width: 500px;
+  width: 70%;
+  margin-left: 25%;
 }
 
 #main h1 {
@@ -36,8 +72,6 @@ a:hover {
   font-weight: normal;
 
   line-height: 40px;
-
-  letter-spacing: -1px;
 }
 
 #main p {
@@ -63,17 +97,12 @@ a:hover {
 }
 
 #sidebar {
-  position: absolute;
-
-  top: 40px;
-  left: 20px;
-  width: 200px;
+  width: 20%;
 
   padding: 20px 20px 0 0;
 
-  border-right: 1px solid #ccc;
-
   text-align: right;
+  float: left;
 }
 
 #sidebar h2 {
@@ -81,7 +110,7 @@ a:hover {
 
   font-size: 13px;
 
-  color: #333;
+  color: #444;
 
   letter-spacing: 1px;
 
