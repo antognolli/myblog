@@ -19,12 +19,20 @@ end
 
 compile '/posts/*/' do
   filter :erb
+  filter :kramdown
   layout 'post_layout'
 end
 
 compile '/posts/*/', :rep => :intro do
   filter :erb
+  filter :kramdown
   layout 'post_intro_layout'
+end
+
+compile '/about/' do
+  filter :erb
+  filter :kramdown
+  layout 'default'
 end
 
 compile '*' do
@@ -47,6 +55,10 @@ end
 # Compile introduction for posts, but don't generate html output.
 route '/posts/*/', :rep => :intro do
   nil
+end
+
+route '/about/' do
+  item.identifier.chop + '.html'
 end
 
 route '*' do
