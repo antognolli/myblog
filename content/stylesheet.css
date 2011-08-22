@@ -6,8 +6,13 @@
   color: #444;
 }
 
-body {
+html {
+  overflow-y: scroll;
+}
+
+html, body {
   background: #ddd;
+  height: 100%;
 }
 
 a {
@@ -27,6 +32,7 @@ a:hover {
   max-width: 770px;
   margin: auto;
   background: #fff;
+  min-height: 100%;
 }
 
 #title {
@@ -75,7 +81,8 @@ a:hover {
 }
 
 #main p {
-  margin: 20px 0;
+  margin: 0;
+  padding-bottom: 20px;
 
   font-size: 15px;
 
