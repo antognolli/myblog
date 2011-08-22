@@ -39,6 +39,8 @@ a:hover {
   margin-left: 20px;
   padding-top: 20px;
   margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  width: 95%;
 }
 
 #title h1 {
@@ -48,13 +50,14 @@ a:hover {
 
 #menu {
   margin-left: 20px;
+  width: 95%;
 }
 
 #menu ul {
   list-style-type: none;
   float: left;
-  width: 95%;
-  /* border-top: 1px solid #ccc; */
+  width: 100%;
+  border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
 }
 
@@ -102,7 +105,7 @@ a:hover {
 #sidebar {
   width: 20%;
 
-  padding: 20px 20px 0 0;
+  padding: 0 20px 0 0;
 
   text-align: right;
   float: left;
@@ -118,12 +121,13 @@ a:hover {
   letter-spacing: 1px;
 
   line-height: 20px;
+  border-bottom: 1px solid #ccc;
+  margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 #sidebar ul {
   list-style-type: none;
-
-  margin: 20px 0;
 }
 
 #sidebar li {
