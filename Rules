@@ -36,6 +36,10 @@ compile '/about/' do
   layout 'default'
 end
 
+compile '/feed/' do
+  filter :erb
+end
+
 compile '*' do
   if item.binary?
     # don’t filter binary items
@@ -60,6 +64,10 @@ end
 
 route '/about/' do
   item.identifier.chop + '.html'
+end
+
+route '/feed/' do
+  '/feed.xml'
 end
 
 route '*' do

@@ -1,0 +1,15 @@
+---
+title: Another post - number 2
+kind: article
+created_at: 21-08-2011
+author: antognolli
+---
+Yet another busy release. More than a hundred of commits for the Bluetooth subsystem will be in the upcoming kernel 3.0 release.
+
+Those patches has the last bits for the Management Interface, By Johan  Hedberg. There should be things to fix and minor features to implement, especially about Bluetooth Low Energy, but the hard work is done.
+
+Another big set of changes is in the L2CAP layer, where Gustavo Padovan is rewritten some parts of it to remove the socket dependence from the L2CAP core. This will help fix many issues in the RFCOMM layer and will help the AMP Manager implementation.
+
+Szymon Janc worked in add Out Of Band Pairing Support to the Management Interface and to replace the kernel_thread() usage with the kthread API among other fixes.
+
+There is also support for 16 digit PIN code in the Legacy Pairing, and lot of bug fixing and clean ups.
