@@ -21,6 +21,7 @@ compile '/posts/*/' do
   filter :erb
   filter :kramdown
   layout 'post_layout'
+  layout 'default'
 end
 
 compile '/posts/*/', :rep => :intro do

@@ -4,8 +4,15 @@ title: Home
 
 <% sorted_articles.each do |article| %>
 <div class="post">
-  <h3><%= article[:title] %></h3>
+  <h3><%= link_to(article[:title], article) %></h3>
   <small>Posted on <%= article[:created_at] %>.</small>
+  <p>
+  </p>
+  <div>
   <%= article.compiled_content :rep => :intro, :snapshot => :post %>
+  </div>
+  <div class="right_link"><%= link_to("comments", article) %></div>
+  <p>
+  </p>
 </div>
 <% end %>
