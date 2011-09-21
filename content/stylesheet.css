@@ -73,7 +73,8 @@ a:hover {
 
 #main {
   width: 70%;
-  margin-left: 25%;
+  margin-right: 25%;
+  margin-left: 20px;
 }
 
 #main h1 {
@@ -108,8 +109,8 @@ a:hover {
   padding: 0 0 0 0;
 
   text-align: left;
-  float: left;
-  margin-left: 20px;
+  float: right;
+  margin-right: 20px;
 }
 
 #sidebar h2 {
