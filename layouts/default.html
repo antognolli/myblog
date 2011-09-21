@@ -7,14 +7,17 @@
     <meta name="generator" content="nanoc 3.2.1">
   </head>
   <body>
+    <% feed = @items.find { |i| i.identifier == '/feed/' } %>
+    <% home = @items.find { |i| i.identifier == '/' } %>
+    <% about = @items.find { |i| i.identifier == '/about/' } %>
     <div id="content">
       <div id="title">
         <h1>Antognolli's blog</h1>
       </div>
       <div id="menu">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><%= link_to_unless_current("Home", home) %></li>
+          <li><%= link_to_unless_current("About", about) %></li>
         </ul>
       </div>
       <div id="sidebar">
@@ -22,7 +25,7 @@
         <ul>
           <li><a href="http://nanoc.stoneship.org/docs/">Documentation</a></li>
           <li><a href="http://nanoc.stoneship.org/docs/3-getting-started/">Getting Started</a></li>
-          <li><a href="feed.html">Subscribe</a></li>
+          <li><%= link_to("Subscribe", feed) %></li>
         </ul>
         <!--
         <h2>Community</h2>

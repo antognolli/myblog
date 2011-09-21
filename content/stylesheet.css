@@ -61,7 +61,7 @@ a:hover {
   margin-bottom: 20px;
 }
 
-#menu a {
+#menu a, #menu span.active {
   float: left;
   width: 40px;
   margin-right: 20px;
