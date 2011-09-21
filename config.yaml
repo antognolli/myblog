@@ -20,7 +20,7 @@ index_filenames: [ 'index.html' ]
 enable_output_diff: false
 
 title: "Antognolli's blog"
-base_url: "http://localhost:3000"
+base_url: "http://antognolli.org"
 author_name: "Rafael Antognolli"
 author_uri: "http://antognolli.org"
 

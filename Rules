@@ -43,6 +43,8 @@ end
 compile '*' do
   if item.binary?
     # don’t filter binary items
+  elsif item[:type] == "feed"
+    filter :erb
   else
     filter :erb
     layout 'default'
@@ -62,13 +64,9 @@ route '/posts/*/', :rep => :intro do
   nil
 end
 
-route '/about/' do
-  item.identifier.chop + '.html'
-end
-
-route '/feed/' do
-  '/feed.xml'
-end
+# route '/tags/*/' do
+#   '/tags.html'
+# end
 
 route '*' do
   if item.binary?

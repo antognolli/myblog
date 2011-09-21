@@ -1,4 +1,4 @@
 <h3><%=@item[:title]%></h3>
-<small>Posted on <%= @item[:created_at] %>.</small>
+<small>Posted on <%= @item[:created_at] %> in <%= tags_for(@item, :base_url =>"/tags/") %></small>
 <p></p>
 <%= yield %>
