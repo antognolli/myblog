@@ -24,7 +24,7 @@ def write_tag_feed_page(dir, tag, format)
     f = format.downcase
     meta = {}
     meta[:title] = "H3RALD - Tag '#{tag}' (#{format} Feed)"
-    meta[:type] = 'feed'
+    meta[:kind] = 'feed'
     meta[:permalink] = "tags/#{tag}/#{f}"
     contents = %{<%= #{f}_feed(:articles => items_with_tag('#{tag}'))%>}
     write_item Pathname("#{dir}/#{tag}-#{f}.xml"), meta, contents
@@ -33,7 +33,7 @@ end
 def write_archive_page(dir, name, count)
     meta = {}
     meta[:title] = "Archive: #{name}"
-    meta[:type] = 'page'
+    meta[:kind] = 'page'
     meta[:filters_pre] = ['erb']
     meta[:permalink] = name.downcase.gsub /\s/, '-'
     pl = (count == 1) ? ' was' : 's were'
