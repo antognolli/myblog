@@ -5,13 +5,8 @@ kind: page
 
 <% sorted_articles.each do |article| %>
 <div class="post">
-  <h3><%= link_to(article[:title], article) %></h3>
-  <small>Posted on <%= article[:created_at] %> in <%= tags_for(article, :base_url =>"/tags/") %></small>
-  <p>
-  </p>
   <div>
-  <%= article.compiled_content :rep => :intro, :snapshot => :post %>
+  <%= article.compiled_content :rep => :home, :snapshot => :post %>
   </div>
-  <div class="comment_link"><%= link_to("comments", article) %></div>
 </div>
 <% end %>

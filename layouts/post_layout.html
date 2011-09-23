@@ -1,4 +1,7 @@
-<h3><%=@item[:title]%></h3>
+<h3><%= link_to_unless_current(@item[:title], @item) %></h3>
 <small>Posted on <%= @item[:created_at] %> in <%= tags_for(@item, :base_url =>"/tags/") %></small>
 <p></p>
 <%= yield %>
+<% if @item_rep.name == :home %>
+<div class="comment_link"><%= link_to("comments", @item) %></div>
+<% end %>

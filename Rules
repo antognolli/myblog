@@ -24,6 +24,12 @@ compile '/posts/*/' do
   layout 'default'
 end
 
+compile '/posts/*/', :rep => :home do
+  filter :erb
+  filter :kramdown
+  layout 'post_layout'
+end
+
 compile '/posts/*/', :rep => :intro do
   filter :erb
   filter :kramdown
@@ -43,7 +49,7 @@ end
 compile '*' do
   if item.binary?
     # don’t filter binary items
-  elsif item[:type] == "feed"
+  elsif item[:kind] == "feed"
     filter :erb
   else
     filter :erb
@@ -60,6 +66,10 @@ route '/posts/*/' do
 end
 
 # Compile introduction for posts, but don't generate html output.
+route '/posts/*/', :rep => :home do
+  nil
+end
+
 route '/posts/*/', :rep => :intro do
   nil
 end

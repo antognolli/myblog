@@ -1,7 +1,7 @@
 def write_tag_page(dir, tag, count)
     meta = {}
     meta[:title] = "Tag: #{tag}"
-    meta[:type] = 'page'
+    meta[:kind] = 'page'
     meta[:filters_pre] = ['erb']
     meta[:feed] = "/tags/#{tag}/"
     meta[:feed_title] = "Tag '#{tag}'"
@@ -12,7 +12,7 @@ def write_tag_page(dir, tag, count)
         <p>#{count} item#{pl} tagged with <em>#{tag}</em> (<%= link_to("subscribe", feed) %>):</p>
             <ul>
             <% items_with_tag('#{tag}').each do |a| %>
-            <%= a.compiled_content :rep => :intro, :snapshot => :post %>
+            <%= a.compiled_content :rep => :home, :snapshot => :post %>
             <% end %>
             </ul>
     }
