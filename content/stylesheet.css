@@ -94,7 +94,8 @@ div#menu a {
 
 #main p {
   margin: 0;
-  padding-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 
   font-size: 9pt;
 
@@ -145,7 +146,6 @@ div#menu a {
   line-height: 20px;
 }
 
-#right_link {
-  float: right;
-  text-align: right;
+div.comment_link {
+    padding-bottom: 30px;
 }

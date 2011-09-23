@@ -11,8 +11,6 @@ title: Home
   <div>
   <%= article.compiled_content :rep => :intro, :snapshot => :post %>
   </div>
-  <div class="right_link"><%= link_to("comments", article) %></div>
-  <p>
-  </p>
+  <div class="comment_link"><%= link_to("comments", article) %></div>
 </div>
 <% end %>
