@@ -38,6 +38,18 @@
       </div>
       <div id="main">
         <%= yield %>
+
+        <% if @item.identifier[/posts/] %>
+        <div id="comments">
+            <script>
+            var idcomments_acct = '99442ef5c6f75639fe28a6652f47f617';
+            var idcomments_post_id = '<%= @item.identifier %>';
+            var idcomments_post_url;
+            </script>
+            <span id="IDCommentsPostTitle" style="display:none"></span>
+            <script type='text/javascript' src='http://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+        </div>
+        <% end %>
       </div>
     </div>
   </body>
