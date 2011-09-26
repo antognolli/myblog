@@ -5,6 +5,7 @@
     <title>Antognolli's blog - <%= @item[:title] %></title>
     <link rel="stylesheet" type="text/css" href="/style.css" media="screen">
     <meta name="generator" content="nanoc 3.2.1">
+    <meta name="viewport" content="width=device-width target-densityDpi=device-dpi" />
   </head>
   <body>
     <% feed = @items.find { |i| i.identifier == '/feed/' } %>
