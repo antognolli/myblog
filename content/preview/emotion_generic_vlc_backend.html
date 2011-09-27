@@ -9,7 +9,7 @@ Emotion is the [EFL] library that handles audio and video playback. It had only
 two backends: *gstreamer* and *xine*. But recently, [Zodiac Aerospace] asked
 [ProFUSION] to integrate a [VLC] backend that was being developed originally by
 Hugo Camboulive. After analyzing his current work, we figured out that it could
-be used not only to integrate VLC, but other players. The end result of
+be used to integrate not only VLC, but other players. The end result of
 this work is a *generic* backend and a brand new vlc plugin for it.
 
 [EFL]: http://www.enlightenment.org/ "Enlightenment Foundation Libraries"
@@ -42,15 +42,15 @@ A player using libvlc is being provided now, and the generic module internally
 checks if the command given was "vlc", in which case it will use this provided
 emotion-vlc player.
 
-When a file is set to this object, it will send the file name to the player, and
-expect an answer that will tell that the player already decoded a bit of the
-file, and the video size is already set on the module, so it can allocate a
+When a file is set to this object, Emotion sends the file name to the player,
+and expects an answer that will tell that the player already decoded a bit of
+the file, and the video size is already set on the module, so it can allocate a
 shared memory with correct size.
 
-The module then allocates the memory, sends a message to the player and expect
-an answer. After this last answer, the "open_done" signal is sent and the module
-knows that it is ready for playing. Commands sent before the module being ready
-are now applied (and play is resumed if necessary).
+The module then allocates the memory, sends a message to the player and expects
+an answer. After this last answer, the "open_done" signal is sent and the
+module knows that it is ready for playing. Commands issued before the module
+being ready are now applied (and play is resumed if necessary).
 
 During this setup stage, info about the file set will be stored in the module,
 so commands like meta data get, length get and so will be available to sync
