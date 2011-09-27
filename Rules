@@ -79,10 +79,6 @@ route '/stylesheet/' do
   '/style.css'
 end
 
-route '/posts/*/' do
-  item.identifier.chop + '.html'
-end
-
 # Compile introduction for posts, but don't generate html output.
 route '/posts/*/', :rep => :home do
   nil
@@ -90,10 +86,6 @@ end
 
 route '/posts/*/', :rep => :intro do
   nil
-end
-
-route '/preview/*/' do
-  item.identifier.chop + '.html'
 end
 
 route '/preview/*/', :rep => :home do
