@@ -23,7 +23,7 @@ end
 def write_tag_feed_page(dir, tag, format)
     f = format.downcase
     meta = {}
-    meta[:title] = "H3RALD - Tag '#{tag}' (#{format} Feed)"
+    meta[:title] = "Antognolli's blog - Tag '#{tag}' (#{format} Feed)"
     meta[:kind] = 'feed'
     meta[:permalink] = "tags/#{tag}/#{f}"
     contents = %{<%= #{f}_feed(:articles => items_with_tag('#{tag}'))%>}
