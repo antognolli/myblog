@@ -58,3 +58,7 @@ def write_item(path, meta, contents)
         f.puts contents
     end
 end
+
+def items_for_preview
+    @items.select { |item| item[:kind] == 'preview' }
+end

@@ -39,6 +39,21 @@ compile '/posts/*/', :rep => :intro do
   layout 'post_intro_layout'
 end
 
+compile '/preview/*/' do
+  filter :erb
+  filter :colorize_syntax
+  filter :kramdown
+  layout 'post_layout'
+  layout 'default'
+end
+
+compile '/preview/*/', :rep => :home do
+  filter :erb
+  filter :colorize_syntax
+  filter :kramdown
+  layout 'post_layout'
+end
+
 compile '/about/' do
   filter :erb
   filter :kramdown
@@ -74,6 +89,14 @@ route '/posts/*/', :rep => :home do
 end
 
 route '/posts/*/', :rep => :intro do
+  nil
+end
+
+route '/preview/*/' do
+  item.identifier.chop + '.html'
+end
+
+route '/preview/*/', :rep => :home do
   nil
 end
 
