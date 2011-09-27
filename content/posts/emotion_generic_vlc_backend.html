@@ -1,0 +1,73 @@
+---
+title: "Emotion backend: generic"
+kind: article
+created_at: 26-09-2011
+author: antognolli
+tags:
+ - profusion
+ - efl
+ - emotion
+ - vlc
+---
+
+Emotion is the [EFL] library that handles audio and video playback. It had
+(until some weeks ago) only two backends: *gstreamer* and *xine*. But after some
+work, I finished a *generic* backend, which was used to give Emotion support to
+play files using VLC.
+
+[EFL]: http://www.enlightenment.org/ "Enlightenment Foundation Libraries"
+
+This generic player backend executes a separated player in another
+process. It receives the bytes to be drawn on the Emotion object through
+a shared memory, and communicates/controls the player through a pipe. The pipe
+file descriptors to be used are sent to the player through command line
+arguments, leaving the standard input/output free to be used if necessary.
+
+The player must receive and send commands defined on a common file called
+`Emotion_Generic_Plugin.h`, which can be included for easier implementation.
+However, there's no need for the player to link against Emotion.
+
+#### How does it work?
+
+When the module is initialized for an emotion object, it starts another process
+that runs the specified player. The player command line is specified using:
+
+<% syntax_colorize :c do %>
+    emotion_object_module_option_set(object, "player", <command>);
+<% end %>
+
+A player using libvlc is being provided now, and the generic module internally
+checks if the command given was "vlc", in which case it will use this provided
+emotion-vlc player.
+
+When a file is set to this object, it will send the file name to the player, and
+expect an answer that will tell that the player already decoded a bit of the
+file, and the video size is already set on the module, so it can allocate a
+shared memory with correct size.
+
+The module then allocates the memory, sends a message to the player and expect
+an answer. After this last answer, the "open_done" signal is sent and the module
+knows that it is ready for playing. Commands sent before the module being ready
+are now applied (and play is resumed if necessary).
+
+During this setup stage, info about the file set will be stored in the module,
+so commands like meta data get, length get and so will be available to sync
+calls like emotion_object_play_length_get().
+
+The playback phase occurs by VLC writing the decoded video data on a shared
+memory buffer, which will be used by Emotion to display the decoded frame. A
+triple buffering mechanism is used to avoid tearing, and also ensures that no
+blocking happens on Emotion when the player is writing the pixels on the buffer.
+
+If the player dies for any reason, a "decode_stop" signal is sent, allowing the
+program to call play again, and in that case it will be restarted. The playback
+should start from the same point it was before the player crashed (if the player
+supports seek on the current media format).
+
+This last point is the main advantage of the generic backend, allowing the
+program to recover from a player crash. Similar plugins can be implemented using
+gstreamer and xine, isolating the decode from the program UI using a separated
+process.
+
+If you have any questions about this backend, please feel free to ask =).
+
