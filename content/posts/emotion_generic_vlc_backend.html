@@ -32,9 +32,11 @@ However, there's no need for the player to link against Emotion.
 When the module is initialized for an emotion object, it starts another process
 that runs the specified player. The player command line is specified using:
 
-<% syntax_colorize :c do %>
-    emotion_object_module_option_set(object, "player", <command>);
+<pre><code class="language-c">
+<% h do %>
+emotion_object_module_option_set(object, "player", <command_to_player>);
 <% end %>
+</code></pre>
 
 A player using libvlc is being provided now, and the generic module internally
 checks if the command given was "vlc", in which case it will use this provided

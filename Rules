@@ -19,6 +19,7 @@ end
 
 compile '/posts/*/' do
   filter :erb
+  filter :colorize_syntax
   filter :kramdown
   layout 'post_layout'
   layout 'default'
@@ -26,12 +27,14 @@ end
 
 compile '/posts/*/', :rep => :home do
   filter :erb
+  filter :colorize_syntax
   filter :kramdown
   layout 'post_layout'
 end
 
 compile '/posts/*/', :rep => :intro do
   filter :erb
+  filter :colorize_syntax
   filter :kramdown
   layout 'post_intro_layout'
 end
