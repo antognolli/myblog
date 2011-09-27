@@ -10,12 +10,17 @@ tags:
  - vlc
 ---
 
-Emotion is the [EFL] library that handles audio and video playback. It had
-(until some weeks ago) only two backends: *gstreamer* and *xine*. But after some
-work, I finished a *generic* backend, which was used to give Emotion support to
-play files using VLC.
+Emotion is the [EFL] library that handles audio and video playback. It had only
+two backends: *gstreamer* and *xine*. But recently, [Zodiac Aerospace] asked
+[ProFUSION] to integrate a [VLC] backend that was being developed originally by
+Hugo Camboulive. The end result of this work is a *generic* backend, which was
+used to give Emotion support to play files using VLC, but can also support other
+players.
 
 [EFL]: http://www.enlightenment.org/ "Enlightenment Foundation Libraries"
+[ProFUSION]: http://profusion.mobi/
+[Zodiac Aerospace]: http://www.zodiacaerospace.com/
+[VLC]: http://www.videolan.org/vlc/
 
 This generic player backend executes a separated player in another
 process. It receives the bytes to be drawn on the Emotion object through
