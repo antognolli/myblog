@@ -151,7 +151,7 @@ div.comment_link {
     padding-bottom: 30px;
 }
 
-div.post pre {
+pre {
     background-color: #eee;
     border: 1px solid #999;
     margin-left: 20px;
