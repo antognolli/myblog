@@ -1,0 +1,10 @@
+This is my blog, using Nanoc to parse and generate output for the published
+content. Following are some dependencies (probably not all) to install and
+build the site with nanoc.
+
+gems dependency
+===============
+ - builder
+ - nokogiri - dependencies required (rdoc, rdoc-data, libxslt)
+ - coderay
+ - kramdown
