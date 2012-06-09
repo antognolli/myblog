@@ -3,3 +3,5 @@
  - tag listing;
  - paging;
  - better rake rule to publish;
+ - make preview items don't appear on tag listings;
+ - document code;
