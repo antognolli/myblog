@@ -1,4 +1,4 @@
-def write_tag_page(dir, tag, count)
+def create_tag_page(base, tag, count)
     meta = {}
     meta[:title] = "Tag: #{tag}"
     meta[:kind] = 'page'
@@ -17,17 +17,17 @@ def write_tag_page(dir, tag, count)
             </ul>
     }
     # Write page
-    write_item Pathname("#{dir}/#{tag}.html"), meta, contents
+    create_item base + tag + '/', meta, contents
 end
 
-def write_tag_feed_page(dir, tag, format)
+def create_tag_feed_page(base, tag, format)
     f = format.downcase
     meta = {}
     meta[:title] = "Antognolli's blog - Tag '#{tag}' (#{format} Feed)"
     meta[:kind] = 'feed'
     meta[:permalink] = "tags/#{tag}/#{f}"
     contents = %{<%= #{f}_feed(:articles => items_with_tag('#{tag}'))%>}
-    write_item Pathname("#{dir}/#{tag}-#{f}.xml"), meta, contents
+    create_item base + tag + "-#{f}/", meta, contents
 end
 
 def write_archive_page(dir, name, count)
@@ -49,16 +49,29 @@ def write_archive_page(dir, name, count)
     write_item dir/"#{meta[:permalink]}.html", meta, contents
 end
 
-def write_item(path, meta, contents)
-    path.parent.mkpath
-    (path).open('w+') do |f|
-        f.print "--"
-        f.puts meta.to_yaml
-        f.puts "-----"
-        f.puts contents
-    end
+# def write_item(path, meta, contents)
+#     path.parent.mkpath
+#     (path).open('w+') do |f|
+#         f.print "--"
+#         f.puts meta.to_yaml
+#         f.puts "-----"
+#         f.puts contents
+#     end
+# end
+
+def create_item(base, meta, contents)
+    it = Nanoc::Item.new(contents, meta, base)
+    @items << it
 end
 
 def items_for_preview
     @items.select { |item| item[:kind] == 'preview' }
+end
+
+def items_published
+    @items.select { |item| item[:kind] != 'preview' }
+end
+
+def filter_published(items)
+    items.select { |item| item[:kind] != 'preview' }
 end

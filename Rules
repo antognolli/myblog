@@ -13,6 +13,31 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 
+preprocess do
+  def writetags
+    base = "/tags/"
+    tags = {}
+    # Collect tag and page data
+    items_published.each do |p|
+      next unless p.attributes[:tags]
+      p.attributes[:tags].each do |t|
+        if tags[t]
+          tags[t] = tags[t]+1
+        else
+          tags[t] = 1
+        end
+      end
+    end
+    # Write pages
+    tags.each_pair do |k, v|
+      create_tag_page base, k, v
+      create_tag_feed_page base, k, 'Atom'
+    end
+  end
+
+  writetags
+end
+
 compile '/stylesheet/' do
   # don’t filter or layout
 end

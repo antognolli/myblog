@@ -8,3 +8,4 @@ gems dependency
  - nokogiri - dependencies required (rdoc, rdoc-data, libxslt)
  - coderay
  - kramdown
+ - adsf (run local server for debugging)
