@@ -3,39 +3,62 @@
   <head>
     <meta charset="utf-8">
     <title>Antognolli's blog - <%= @item[:title] %></title>
-    <link rel="stylesheet" type="text/css" href="/style.css" media="screen">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" media="screen">
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.min.css" media="screen">
     <meta name="generator" content="nanoc 3.2.1">
-    <meta name="viewport" content="width=device-width target-densityDpi=device-dpi" />
+    <meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=1.0" />
   </head>
+
   <body>
     <% feed = @items.find { |i| i.identifier == '/feed/' } %>
     <% home = @items.find { |i| i.identifier == '/' } %>
     <% about = @items.find { |i| i.identifier == '/about/' } %>
-    <div id="content">
-      <div id="title">
-        <h1>Antognolli's blog</h1>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="#">Antognolli's blog</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><%= my_link_to("Home", home) %></li>
+              <li><%= my_link_to("About", about) %></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div id="menu">
-        <ul>
-          <li><%= link_to_unless_current("Home", home) %></li>
-          <li><%= link_to_unless_current("About", about) %></li>
-        </ul>
+    </div>
+
+    <div class="container-fluid" id="content">
+      <div class="row-fluid">
+        <p class="lead">Yet another developer blog.</p>
       </div>
-      <div id="sidebar">
-        <h2>Blogroll</h2>
-        <ul>
-          <li><a href="http://brunodilly.org/blog/">bdilly</a></li>
-          <li><a href="http://jprvita.wordpress.com/">jprvita</a></li>
-          <li><a href="http://blog.gustavobarbieri.com.br/">k-s</a></li>
-          <li><a href="http://strano.org/">lfelipe</a></li>
-          <li><a href="http://padovan.org/blog/">padovan</a></li>
-        </ul>
-        <h2>Meta</h2>
-        <ul>
-          <li><%= link_to("Subscribe (rss)", feed) %></li>
-        </ul>
+      <div class="row-fluid">
+      <div class="span3">
+        <div class="well sidebar-nav">
+          <ul class="nav nav-list">
+            <li class="nav-header">Blogroll</li>
+            <li><a href="http://brunodilly.org/blog/">bdilly</a></li>
+            <li><a href="http://jprvita.wordpress.com/">jprvita</a></li>
+            <li><a href="http://blog.gustavobarbieri.com.br/">k-s</a></li>
+            <li><a href="http://strano.org/">lfelipe</a></li>
+            <li><a href="http://padovan.org/blog/">padovan</a></li>
+            <li class="nav-header">Meta</li>
+            <li><%= link_to("Subscribe (rss)", feed) %></li>
+          </ul>
+        </div>
       </div>
-      <div id="main">
+      <div class="span8" id="main">
         <%= yield %>
 
         <% if @item.identifier[/posts/] %>
@@ -50,6 +73,12 @@
         </div>
         <% end %>
       </div>
+      </div> <!-- row-fluid -->
     </div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>

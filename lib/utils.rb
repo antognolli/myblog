@@ -75,3 +75,15 @@ end
 def filter_published(items)
     items.select { |item| item[:kind] != 'preview' }
 end
+
+def my_link_to(text, target, attributes={})
+  # Find path
+  path = target.is_a?(String) ? target : target.path
+
+  if @item_rep && @item_rep.path == path
+    # Create message
+    "<li class=\"active\">" + link_to(text, target, attributes) + "</li>"
+  else
+    link_to(text, target, attributes)
+  end
+end

@@ -38,8 +38,12 @@ preprocess do
   writetags
 end
 
-compile '/stylesheet/' do
+compile '/css/*/' do
   # don’t filter or layout
+end
+
+compile '/js/*/' do
+  # don't filter or layout
 end
 
 compile '/posts/*/' do
@@ -100,10 +104,6 @@ compile '*' do
   end
 end
 
-route '/stylesheet/' do
-  '/style.css'
-end
-
 # Compile introduction for posts, but don't generate html output.
 route '/posts/*/', :rep => :home do
   nil
@@ -120,6 +120,14 @@ end
 # route '/tags/*/' do
 #   '/tags.html'
 # end
+
+route '/js/*/' do
+  item.identifier.chop + '.' + item[:extension]
+end
+
+route '/css/*/' do
+  item.identifier.chop + '.' + item[:extension]
+end
 
 route '*' do
   if item.binary?
